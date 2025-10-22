@@ -1,0 +1,14 @@
+<h2>Shopping Cart</h2>
+<button (click)="addSampleItem()">Add Sample Item</button>
+<button (click)="clearCart()">Clear Cart</button>
+
+<div *ngFor="let item of items$ | async">
+  <p>
+    {{item.name}} - {{item.quantity}} x {{item.price}} = {{item.quantity * item.price}}
+  </p>
+  <button (click)="decrementQuantity(item)">-</button>
+  <button (click)="incrementQuantity(item)">+</button>
+  <button (click)="removeItem(item.id)">Remove</button>
+</div>
+
+<p>Total Price: {{ total$ | async }}</p>
